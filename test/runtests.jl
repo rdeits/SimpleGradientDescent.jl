@@ -1,6 +1,6 @@
 using SimpleGradientDescent
 using Base.Test
-using Ipopt
+using NLopt
 
 let
     num_vars = 10
@@ -27,10 +27,10 @@ let
     @test all(isapprox.(x, xstar, atol=1e-2))
 
     # We can also specify a particular solver if we want to:
-    model = getmodel(cost, num_vars, IpoptSolver())
+    model = getmodel(cost, num_vars, NLoptSolver(algorithm=:LD_MMA))
 
     # And we can specify lower and upper bounds on the decision variables:
-    model = getmodel(cost, num_vars, IpoptSolver(),
+    model = getmodel(cost, num_vars, NLoptSolver(algorithm=:LD_MMA),
                     [-1.0 for i in 1:num_vars],
                     [1.0 for i in 1:num_vars])
     setwarmstart!(model, [0.0 for i in 1:num_vars])
