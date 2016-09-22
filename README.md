@@ -1,12 +1,10 @@
 # SimpleGradientDescent
 
 [![Build Status](https://travis-ci.org/rdeits/SimpleGradientDescent.jl.svg?branch=master)](https://travis-ci.org/rdeits/SimpleGradientDescent.jl)
-
 [![Coverage Status](https://coveralls.io/repos/rdeits/SimpleGradientDescent.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/rdeits/SimpleGradientDescent.jl?branch=master)
-
 [![codecov.io](http://codecov.io/github/rdeits/SimpleGradientDescent.jl/coverage.svg?branch=master)](http://codecov.io/github/rdeits/SimpleGradientDescent.jl?branch=master)
 
-This package provides some helpful boilerplate code to convert general unconstrained gradient descent of a cost function into a [MathProgBase](https://github.com/JuliaOpt/MathProgBase.jl) nonlinear model. This model can then be solved by any solver which supports the MathProgBase interface, such as [Ipopt](https://github.com/JuliaOpt/Ipopt.jl) and [NLopt](https://github.com/JuliaOpt/NLopt.jl).
+This package provides some helpful boilerplate code to convert general unconstrained gradient descent of a cost function into a [MathProgBase.jl](https://github.com/JuliaOpt/MathProgBase.jl) nonlinear model. This model can then be solved by any solver which supports the MathProgBase interface, such as [Ipopt](https://github.com/JuliaOpt/Ipopt.jl) and [NLopt](https://github.com/JuliaOpt/NLopt.jl).
 
 # Usage
 
