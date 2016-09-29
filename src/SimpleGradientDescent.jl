@@ -13,9 +13,12 @@ export GradientDescent,
        getsolution,
        status
 
-immutable GradientDescent{F <: Function} <: MathProgBase.AbstractNLPEvaluator
+immutable GradientDescent{F <: Function, G <: Function} <: MathProgBase.AbstractNLPEvaluator
     func::F
+    gradient!::G
 end
+
+GradientDescent(f::Function) = GradientDescent(f, (result, x) -> ForwardDiff.gradient!(result, f, x))
 
 function MathProgBase.initialize(gd::GradientDescent, requested_features::Vector{Symbol})
 end
@@ -24,7 +27,8 @@ MathProgBase.features_available(gd::GradientDescent) = [:Grad]
 
 MathProgBase.jac_structure(gd::GradientDescent) = (tuple(), tuple())
 
-MathProgBase.eval_grad_f(gd::GradientDescent, g, x) = ForwardDiff.gradient!(g, gd.func, x)
+MathProgBase.eval_grad_f(gd::GradientDescent, g, x) = gd.gradient!(g, x)
+
 
 MathProgBase.eval_f(gd::GradientDescent, x) = gd.func(x)
 
