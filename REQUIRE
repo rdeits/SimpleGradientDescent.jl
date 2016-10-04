@@ -1,3 +1,4 @@
 julia 0.4
 MathProgBase 0.5.6
 ForwardDiff 0.2.5
+StaticArrays
